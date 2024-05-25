@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM library/python:3.11.6",
+    "RUN apt update && apt upgrade -y",
+    "RUN mkdir -p /usr/src/app",
+    "WORKDIR /usr/src/app",
+    "COPY ./src/ /usr/src/app",
+    "RUN pip install -r requirements.txt",
+    "COPY ./utils/ /usr/src/utils",
+    "EXPOSE 80",
+    "CMD sh /usr/src/utils/run.sh"
+  ]
+}
+
